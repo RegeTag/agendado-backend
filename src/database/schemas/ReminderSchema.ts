@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose'
 
 const ReminderSchema = new Schema({
-    EventDate: Number,
+    EventDate: Date,
     title: String,
     description: String
 })

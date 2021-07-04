@@ -3,7 +3,7 @@ import CreateReminderServices from '../services/CreateReminderService'
 
 class CreateReminderController{
     async handle(req:Request, res:Response){
-        const { EventDate, EventStartsAt, description, title } = req.body
+        const { EventDate, description, title } = req.body
 
         const reminder = await CreateReminderServices.execute({EventDate, description, title})
 

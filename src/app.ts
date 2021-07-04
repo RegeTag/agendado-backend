@@ -1,8 +1,10 @@
 import Express from "express"
 import 'express-async-errors'
 import router from "./routes"
-import "./database"
+import { connectToDB } from "./database"
 import errorHandleMiddleware from "./middlewares/errorHandleMiddleware"
+
+connectToDB()
 
 const app = Express()
 

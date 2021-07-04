@@ -3,11 +3,23 @@ import { config } from 'dotenv'
 
 config()
 
-mongoose.connect(process.env.ATLAS_URI,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-})
+function connectToDB():Promise<void>{
+    mongoose.connect(process.env.ATLAS_URI,{
+        useNewUrlParser:true,
+        useUnifiedTopology:true
+    })
+    
+    mongoose.connection.on("connected", () => {
+        console.log("connected to DB")
+    })
+    
+    return
+}
 
-mongoose.connection.on("connected", () => {
-    console.log("connected to DB")
-})
+function disconnectFromDB():Promise<void>{
+    mongoose.disconnect()
+
+    return
+}
+
+export {connectToDB, disconnectFromDB}
