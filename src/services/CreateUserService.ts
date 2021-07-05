@@ -1,14 +1,14 @@
 import UserEntity from "../models/UserEntity"
 import { hash } from 'bcryptjs'
 
-interface Iuser{
+interface InewUser{
     name: string
     email: string
     password: string
 }
 
 class CreateUserService{
-    async execute({name, email, password}:Iuser){
+    async execute({name, email, password}:InewUser){
         if(!name || !email || !password){
             throw new Error("Invalid user!")
         }

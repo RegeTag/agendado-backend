@@ -1,9 +1,10 @@
 import { Schema } from 'mongoose'
 
 const ReminderSchema = new Schema({
-    EventDate: Date,
+    eventDate: Date,
     title: String,
-    description: String
+    description: String,
+    email: String
 })
 
 export default ReminderSchema
