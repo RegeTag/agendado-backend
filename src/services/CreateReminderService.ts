@@ -1,21 +1,31 @@
 import ReminderEntity from '../models/ReminderEntity'
+import UserEntity from '../models/UserEntity'
 
 interface Ireminder{
     title:string
-    EventDate:Date
+    email:string
+    eventDate?:Date
     description:string
+    
 }
 
 class CreateReminderService{
-    async execute({EventDate, description, title}:Ireminder){
+    async execute({eventDate, description, title, email}:Ireminder){
         
-        if(!EventDate || !description || !title){
+        if(!description || !title || !email){
+            throw new Error("Reminder not valid!")
+        }
+
+        const user = await UserEntity.findOne({email})
+
+        if(!user){
             throw new Error("Reminder not valid!")
         }
 
         const Reminder:Ireminder = {
             description, 
-            EventDate, 
+            eventDate, 
+            email,
             title
         }
 
@@ -28,4 +38,3 @@ class CreateReminderService{
 }
 
 export default new CreateReminderService()
-export { Ireminder }
