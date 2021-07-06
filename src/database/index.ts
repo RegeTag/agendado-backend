@@ -6,7 +6,8 @@ config()
 function connectToDB():Promise<void>{
     mongoose.connect(process.env.ATLAS_URI,{
         useNewUrlParser:true,
-        useUnifiedTopology:true
+        useUnifiedTopology:true,
+        useFindAndModify: true
     })
     
     mongoose.connection.on("connected", () => {
