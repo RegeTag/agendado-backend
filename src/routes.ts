@@ -4,6 +4,7 @@ import CreateUserController from './controllers/CreateUserController'
 import DeleteUserController from './controllers/DeleteUserController'
 import CreateTokenController from './controllers/CreateTokenController'
 import CreateReminderController from './controllers/CreateReminderController'
+import DeleteReminderController from './controllers/DeleteReminderController'
 import GetUserRemindersController from './controllers/GetUserRemindersController'
 
 const router = Router()
@@ -13,7 +14,9 @@ const router = Router()
 
 router.post("/reminders", ensureAuthMiddleware, CreateReminderController.handle)
 
-router.get("/users/reminders", ensureAuthMiddleware, GetUserRemindersController.handle)
+router.get("/reminders", ensureAuthMiddleware, GetUserRemindersController.handle)
+
+router.delete("/reminders", ensureAuthMiddleware, DeleteReminderController.handle)
 
 // ==================== User Routes ==============================
 
